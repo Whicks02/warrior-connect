@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, MessageSquare, User } from 'lucide-react';
+import { Home, MessageSquare, User, Settings } from 'lucide-react'; // Import Settings icon
 import { MadeWithDyad } from "@/components/made-with-dyad";
 
 interface LayoutProps {
@@ -25,6 +25,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <Link to="/profile" className="flex flex-col items-center text-sm hover:text-yellow-300 transition-colors">
             <User size={20} />
             <span>Profile</span>
+          </Link>
+          <Link to="/settings" className="flex flex-col items-center text-sm hover:text-yellow-300 transition-colors">
+            <Settings size={20} />
+            <span>Settings</span>
           </Link>
         </nav>
       </header>
