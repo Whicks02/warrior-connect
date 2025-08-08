@@ -4,27 +4,19 @@ import { Button } from "@/components/ui/button";
 import { Grid3X3, Bookmark, User } from 'lucide-react';
 
 const ProfilePage: React.FC = () => {
+  // Removed hardcoded user data. In a real app, this data would come from a backend.
   const user = {
-    username: 'warrior_student',
-    fullName: 'Alex Johnson',
-    bio: 'Student at Warrior High. Future engineer. 📚✏️',
-    avatar: 'https://github.com/shadcn.png',
-    posts: 12,
-    followers: 345,
-    following: 120,
+    username: 'current_user',
+    fullName: 'Your Name',
+    bio: 'This is your profile. Update it!',
+    avatar: 'https://api.dicebear.com/7.x/initials/svg?seed=CU', // Placeholder avatar
+    posts: 0,
+    followers: 0,
+    following: 0,
   };
 
-  const userPosts = [
-    'https://via.placeholder.com/300x300/4169E1/FFFFFF?text=Post+1',
-    'https://via.placeholder.com/300x300/FFD700/000000?text=Post+2',
-    'https://via.placeholder.com/300x300/4169E1/FFFFFF?text=Post+3',
-    'https://via.placeholder.com/300x300/FFD700/000000?text=Post+4',
-    'https://via.placeholder.com/300x300/4169E1/FFFFFF?text=Post+5',
-    'https://via.placeholder.com/300x300/FFD700/000000?text=Post+6',
-    'https://via.placeholder.com/300x300/4169E1/FFFFFF?text=Post+7',
-    'https://via.placeholder.com/300x300/FFD700/000000?text=Post+8',
-    'https://via.placeholder.com/300x300/4169E1/FFFFFF?text=Post+9',
-  ];
+  // Removed hardcoded user posts. In a real app, this data would come from a backend.
+  const userPosts: string[] = []; // Now an empty array
 
   return (
     <div className="max-w-3xl mx-auto bg-white/90 backdrop-blur-sm text-gray-800 rounded-lg shadow-lg p-6">
@@ -67,9 +59,15 @@ const ProfilePage: React.FC = () => {
 
       {/* User Posts Grid */}
       <div className="grid grid-cols-3 gap-1 mt-4">
-        {userPosts.map((src, index) => (
-          <img key={index} src={src} alt={`User post ${index + 1}`} className="w-full h-auto object-cover aspect-square" />
-        ))}
+        {userPosts.length === 0 ? (
+          <div className="col-span-3 text-center text-gray-600 text-lg mt-4">
+            No posts yet. Share your moments!
+          </div>
+        ) : (
+          userPosts.map((src, index) => (
+            <img key={index} src={src} alt={`User post ${index + 1}`} className="w-full h-auto object-cover aspect-square" />
+          ))
+        )}
       </div>
     </div>
   );
